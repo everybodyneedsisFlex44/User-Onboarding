@@ -1,1 +1,5 @@
-{}
+{
+  "dependencies": {
+    "react-schema-form": "^0.9.10"
+  }
+}

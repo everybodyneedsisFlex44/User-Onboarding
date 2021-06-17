@@ -1,11 +1,17 @@
 import React from 'react'
 
 export default function UserForm(props) {
-    const { values, update, submit } = props
+    const { 
+        values, 
+        change, 
+        submit,
+        disabled,
+        errors, 
+    } = props
 
     const onChange = evt => {
         const { name, value } = evt.target
-        update(name, value)
+        change(name, value)
     }
 
     const onSubmit = evt => {
@@ -16,6 +22,8 @@ export default function UserForm(props) {
     return (
         <form className='form container' onSubmit={onSubmit}>
             <div className='form-group inputs'>
+                <h2>Add a User</h2>
+                
                 <label>Name:
                     <input
                         type='text'
@@ -43,7 +51,12 @@ export default function UserForm(props) {
                 </label>
 
                 <div className='submit'>
-                    <button disabled={!values.name || !values.email || !values.password}>submit</button>
+                    <button disabled={disabled}>submit</button>
+                    <div className='errors'>
+                        <div>{errors.username}</div>
+                        <div>{errors.email}</div>
+                        <div>{errors.password }</div>
+                    </div>
                 </div>
             </div>
         </form>
