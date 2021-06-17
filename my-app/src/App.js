@@ -7,13 +7,13 @@ import * as yup from 'yup'
 import schema from './validation/formSchema'
 
 const initialFormValues = {
-  name: '',
+  first_name: '',
   email: '',
   password: '',
 }
 
 const initialFormErrors = {
-  username: '',
+  first_name: '',
   email: '',
   password: '',
 }
@@ -29,9 +29,10 @@ function App() {
 
 
   const getUsers = () => {
-    axios.get('http://buddies.com/api/friends')
+    axios.get('https://reqres.in/api/users')
       .then(res => {
-        setUsers(res.data)
+        setUsers([...res.data.data])
+        console.log(...res.data.data)
       })
       .catch(err => {
         console.log(err)
@@ -39,9 +40,9 @@ function App() {
   }
 
   const postNewUser = newUser => {
-    axios.post('http://buddies.com/api/friends', newUser)
+    axios.post('https://reqres.in/api/users', newUser)
       .then(res => {
-        setUsers([res.data, ...users])
+        setUsers([ ...users, res.data ])
       })
       .catch(err => {
         console.log(err)
@@ -68,7 +69,7 @@ function App() {
 
   const submitForm = () => {
     const newUser = {
-      name: formValues.name.trim(),
+      name: formValues.first_name.trim(),
       email: formValues.email.trim(),
       password: formValues.password.trim()
     }
@@ -96,12 +97,13 @@ function App() {
       />
 
       {
-        users.map(user => {
+        users.map(user => (
           <NewUser
             key={user.id}
             details={user}
           />
-        })
+          )
+        )
       }
       
     </div>
