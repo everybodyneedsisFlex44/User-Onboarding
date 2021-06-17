@@ -49,13 +49,13 @@ function App() {
         values={formValues}
       />
 
-      {
+      {/* {
         user.map(user => {
           return (
             <NewUser key={user.id} details={user} />
           )
         })
-      }
+      } */}
 
 
     </div>

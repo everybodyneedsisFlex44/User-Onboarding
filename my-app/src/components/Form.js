@@ -4,7 +4,7 @@ export default function UserForm(props) {
     const { values, update, submit } = props
 
     const onChange = evt => {
-        const { name, value } = event.target
+        const { name, value } = evt.target
         update(name, value)
     }
 
