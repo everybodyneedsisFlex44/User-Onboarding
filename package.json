@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "react-schema-form": "^0.9.10"
+  },
+  "devDependencies": {
+    "cypress": "^7.5.0"
+  }
+}
