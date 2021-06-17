@@ -22,13 +22,14 @@ const initialUsers = []
 const initialDisabled = true
 
 function App() {
-  const [users, setUsers] = useState(initialUsers)          // array of friend objects
-  const [formValues, setFormValues] = useState(initialFormValues) // object
-  const [formErrors, setFormErrors] = useState(initialFormErrors) // object
-  const [disabled, setDisabled] = useState(initialDisabled)       // boolean
+  const [users, setUsers] = useState(initialUsers)
+  const [formValues, setFormValues] = useState(initialFormValues)
+  const [formErrors, setFormErrors] = useState(initialFormErrors)
+  const [disabled, setDisabled] = useState(initialDisabled)
+
 
   const getUsers = () => {
-    axios.get('https://reqres.in/api/users')
+    axios.get('http://buddies.com/api/friends')
       .then(res => {
         setUsers(res.data)
       })
@@ -40,7 +41,7 @@ function App() {
   console.log(getUsers)
 
   const postNewUser = newUser => {
-    axios.post('https://reqres.in/api/users', newUser)
+    axios.post('http://buddies.com/api/friends', newUser)
       .then(res => {
         setUsers([res.data, ...users])
       })
@@ -85,7 +86,7 @@ function App() {
   }, [formValues])
 
   return (
-    <div className="App">
+    <div className="container">
       <h1>User Onboarding</h1>
 
       <UserForm 
@@ -96,15 +97,13 @@ function App() {
         submit={submitForm}
       />
 
-      <NewUser />
-
-      {/* {
-        users.map(user => {
+      {
+        users.map((user, idx) => {
           return (
             <NewUser key={user.id} details={user} />
           )
         })
-      } */}
+      }
     </div>
   );
 }

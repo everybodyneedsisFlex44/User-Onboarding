@@ -43,14 +43,14 @@ export default function UserForm(props) {
                 </label>
                 <label>Password:
                     <input
-                        type='password'
+                        type='text'
                         name='password'
                         onChange={onChange}
                         value={values.password}
                     />
                 </label>
 
-                <div className='submit'>
+                <div className='form-group submit'>
                     <button disabled={disabled}>submit</button>
                     <div className='errors'>
                         <div>{errors.username}</div>
