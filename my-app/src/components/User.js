@@ -1,9 +1,9 @@
 import React from 'react'
 
 export default function NewUser({ details }) {
-  if (!details) {
-    return <h3>Working fetching your User's details...</h3>
-  }
+  // if (!details) {
+  //   return <h3>Working fetching your User's details...</h3>
+  // }
 
   return (
     <div className='friend container'>

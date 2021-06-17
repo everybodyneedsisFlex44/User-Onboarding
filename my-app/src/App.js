@@ -38,8 +38,6 @@ function App() {
       })
   }
 
-  console.log(getUsers)
-
   const postNewUser = newUser => {
     axios.post('http://buddies.com/api/friends', newUser)
       .then(res => {
@@ -91,19 +89,21 @@ function App() {
 
       <UserForm 
         values={formValues}
+        submit={submitForm}
         change={inputChange}
         disabled={disabled}
         errors={formErrors}
-        submit={submitForm}
       />
 
       {
-        users.map((user, idx) => {
-          return (
-            <NewUser key={user.id} details={user} />
-          )
+        users.map(user => {
+          <NewUser
+            key={user.id}
+            details={user}
+          />
         })
       }
+      
     </div>
   );
 }
